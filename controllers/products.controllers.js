@@ -5,7 +5,7 @@ const Product = require('../models/products.model');
 //GET http://localhost:3000/api/providers --> Todos los providers // mirar demo clase mongo ssr (get hecho)
 const getProducts = async (req, res) => {
   try {
-    let products = await product.find({}, "-_id -__v").populate(
+    let products = await Product.find({}, "-_id -__v").populate(
       "provider",
       "-_id -__v")
     //console.log(products);

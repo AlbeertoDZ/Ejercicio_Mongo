@@ -4,7 +4,7 @@ const Provider = require("../models/providers.model");
 //GET http://localhost:3000/api/providers --> Todos los providers
 const getAllProvider = async (req, res) => {
     try {
-        const provider = await product.find({})
+        const provider = await Provider.find({})
         console.log(provider);
         
         if(provider.length === 0) {
@@ -29,7 +29,7 @@ const createProvider = async (req , res) => {
         const data = req.body;
         let answer = await new Provider(data).save();
         res.status(201).json(answer);
-    } catch {
+    } catch(error) {
         console.log(`ERROR: ${error.stack}`);
         res.status(400).json({ msj: `ERROR: ${error.stack}` });
     }
